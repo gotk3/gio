@@ -9,7 +9,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/terrak/gotk3/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 func init() {
@@ -21,7 +21,7 @@ func init() {
 		{glib.Type(C.g_menu_model_get_type()), marshalMenuModel},
 		{glib.Type(C.g_menu_link_iter_get_type()), marshalMenuLinkIter},
 		{glib.Type(C.g_menu_attribute_iter_get_type()), marshalMenuAttributeIter},
-		
+
 		// Boxed
 
 	}

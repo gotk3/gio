@@ -9,7 +9,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/terrak/gotk3/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 func init() {
@@ -66,16 +66,15 @@ func convertToSimpleAction(c *C.GSimpleAction) *SimpleAction {
 	return wrapSimpleAction(obj)
 }
 
-
 //GSimpleAction *
 //g_simple_action_new (const gchar *name,
 //                     const GVariantType *parameter_type);
 //Creates a new action.
 //The created action is stateless. See g_simple_action_new_stateful().
-func SimpleActionNew( name string, parameter_type *glib.VariantType) *SimpleAction{
+func SimpleActionNew(name string, parameter_type *glib.VariantType) *SimpleAction {
 	cstr := C.CString(name)
 	defer C.free(unsafe.Pointer(cstr))
-	c:=C.g_simple_action_new((*C.gchar)(cstr), (*C.GVariantType)(parameter_type.GVariantType))
+	c := C.g_simple_action_new((*C.gchar)(cstr), (*C.GVariantType)(parameter_type.GVariantType))
 	obj := &glib.Object{glib.ToGObject(unsafe.Pointer(c))}
 	return wrapSimpleAction(obj)
 }
@@ -88,10 +87,10 @@ func SimpleActionNew( name string, parameter_type *glib.VariantType) *SimpleActi
 //Creates a new stateful action.
 //state is the initial state of the action. All future state values must have the same GVariantType as the initial state.
 //If the state GVariant is floating, it is consumed.
-func SimpleActionNewStateful( name string, parameter_type *glib.VariantType, state *glib.Variant) *SimpleAction{
+func SimpleActionNewStateful(name string, parameter_type *glib.VariantType, state *glib.Variant) *SimpleAction {
 	cstr := C.CString(name)
 	defer C.free(unsafe.Pointer(cstr))
-	c:=C.g_simple_action_new_stateful((*C.gchar)(cstr), (*C.GVariantType)(parameter_type.GVariantType), (*C.GVariant)(state.GVariant))
+	c := C.g_simple_action_new_stateful((*C.gchar)(cstr), (*C.GVariantType)(parameter_type.GVariantType), (*C.GVariant)(state.GVariant))
 	obj := &glib.Object{glib.ToGObject(unsafe.Pointer(c))}
 	return wrapSimpleAction(obj)
 }
@@ -102,8 +101,8 @@ func SimpleActionNewStateful( name string, parameter_type *glib.VariantType, sta
 //Sets the action as enabled or not.
 //An action must be enabled in order to be activated or in order to have its state changed from outside callers.
 //This should only be called by the implementor of the action. Users of the action should not attempt to modify its enabled flag.
-func (v*SimpleAction)SetEnabled(enabled bool){
-	b:=gbool(enabled)
+func (v *SimpleAction) SetEnabled(enabled bool) {
+	b := gbool(enabled)
 	C.g_simple_action_set_enabled(v.native(), b)
 }
 
@@ -114,7 +113,7 @@ func (v*SimpleAction)SetEnabled(enabled bool){
 //This directly updates the 'state' property to the given value.
 //This should only be called by the implementor of the action. Users of the action should not attempt to directly modify the 'state' property. Instead, they should call g_action_change_state() to request the change.
 //If the value GVariant is floating, it is consumed.
-func (v*SimpleAction)SetState( value *glib.Variant){
+func (v *SimpleAction) SetState(value *glib.Variant) {
 	C.g_simple_action_set_state(v.native(), (*C.GVariant)(value.GVariant))
 }
 
@@ -123,20 +122,6 @@ func (v*SimpleAction)SetState( value *glib.Variant){
 //                                GVariant *state_hint);
 //Sets the state hint for the action.
 //See g_action_get_state_hint() for more information about action state hints.
-func (v*SimpleAction)SetStateHint( value *glib.Variant){
+func (v *SimpleAction) SetStateHint(value *glib.Variant) {
 	C.g_simple_action_set_state_hint(v.native(), (*C.GVariant)(value.GVariant))
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

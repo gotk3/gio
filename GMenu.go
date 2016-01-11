@@ -9,7 +9,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/terrak/gotk3/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 func init() {
@@ -66,8 +66,6 @@ func convertToMenu(c *C.GMenu) *Menu {
 	return wrapMenu(obj)
 }
 
-
-
 //GMenu *	g_menu_new ()
 //void	g_menu_freeze ()
 //void	g_menu_insert ()
@@ -101,4 +99,3 @@ func convertToMenu(c *C.GMenu) *Menu {
 //void	g_menu_item_set_attribute_value ()
 //void	g_menu_item_set_attribute ()
 //void	g_menu_item_set_link ()
-

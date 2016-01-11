@@ -5,8 +5,8 @@ package gio
 // #include "gio.go.h"
 import "C"
 import (
-"github.com/terrak/gotk3/glib"
-"errors"
+	"errors"
+	"github.com/gotk3/gotk3/glib"
 )
 
 func init() {
