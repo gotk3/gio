@@ -1,5 +1,7 @@
 //GActionMap — Interface for Action containers
-package gio
+
+// +build
+package gio_2_32
 
 // #cgo pkg-config: gio-2.0 glib-2.0
 // #include <gio/gio.h>
